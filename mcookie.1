@@ -1,0 +1,40 @@
+.TH MCOOKIE 1 "June 2026" "svr4_utils" "User Commands"
+.SH NAME
+mcookie \- generate a magic cookie for xauth
+.SH SYNOPSIS
+.B mcookie
+[\fIoptions\fP]
+.SH DESCRIPTION
+.B mcookie
+prints a random hexadecimal cookie suitable for use with
+.BR xauth (1).
+In this SVR4 port, the command keeps a small compatibility surface rather than
+mirroring every util-linux detail.
+.PP
+If no seed file is supplied, a cookie is generated from
+.BR /dev/urandom ,
+with
+.BR /dev/random
+used as a fallback.
+If a seed file is given with
+.BR -f ,
+its contents are mixed into the generated cookie.
+.SH OPTIONS
+.TP
+.BR -f , " --file "\fIfile\fP
+Use \fIfile\fP as a cookie seed.
+.TP
+.BR -m , " --max-size "\fInum\fP
+Limit how much data is read from the seed file.
+Common binary suffixes such as KiB and MiB are accepted.
+.TP
+.BR -v , " --verbose"
+Describe what is being done.
+.TP
+.BR -h , " --help"
+Display help and exit.
+.TP
+.BR -V , " --version"
+Display version information and exit.
+.SH SEE ALSO
+.BR xauth (1)
